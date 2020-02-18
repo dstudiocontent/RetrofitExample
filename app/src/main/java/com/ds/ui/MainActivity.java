@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.ds.R;
 import com.ds.model.Post;
 import com.ds.model.Resource;
+import com.ds.model.User;
 import com.ds.viewmodel.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         textViewResult = findViewById(R.id.text_view);
 
         activityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        activityViewModel.getAllPosts().observe(this, resource -> {
+
+        /*activityViewModel.getAllPosts().observe(this, resource -> {
             if (resource.getStatus() == Resource.ResourceStatus.SUCCESS) {
                 if (resource.getData() != null) {
                     for (Post post : resource.getData()) {
@@ -33,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
                         content += "User ID: " + post.getUserId() + "\n";
                         content += "Title: " + post.getTitle() + "\n";
                         content += "Text: " + post.getText() + "\n\n";
+
+                        textViewResult.append(content);
+                    }
+                }
+            }
+        });*/
+
+        activityViewModel.getAllUsers().observe(this, resource -> {
+            if (resource.getStatus() == Resource.ResourceStatus.SUCCESS) {
+                if (resource.getData() != null) {
+                    for (User user : resource.getData()) {
+
+                        String content = "";
+                        content += "ID: " + user.getId() + "\n";
+                        content += "User ID: " + user.getName() + "\n";
 
                         textViewResult.append(content);
                     }

@@ -1,6 +1,7 @@
 package com.ds.repository;
 
 import com.ds.model.Post;
+import com.ds.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,9 @@ interface ApiCalls {
 
     @GET()
     Call<List<Post>> getAllPosts(@Url String url);
+
+    @GET()
+    Call<List<User>> getAllUsers(@Url String url);
 
     @GET("posts/{id}")
     Call<Post> getPostById(@Path("id") int postId);

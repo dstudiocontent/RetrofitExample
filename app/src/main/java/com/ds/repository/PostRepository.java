@@ -13,17 +13,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PostRepository {
     private ApiCalls retrofitApi;
 
     public PostRepository() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
+        Retrofit retrofit = RetrofitInstance.getInstance().getRetrofit();
         retrofitApi = retrofit.create(ApiCalls.class);
     }
 
@@ -41,7 +36,7 @@ public class PostRepository {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Post>> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Post>> call, @NonNull Throwable t) {
                 resource.setValue(new Resource<Post>().error(new Exception("Api call failed")));
             }
         });
