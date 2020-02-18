@@ -1,4 +1,6 @@
-package com.ds;
+package com.ds.repository;
+
+import com.ds.model.Post;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +12,7 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
-public interface RetrofitApi {
+interface ApiCalls {
 
     @GET()
     Call<List<Post>> getAllPosts(@Url String url);

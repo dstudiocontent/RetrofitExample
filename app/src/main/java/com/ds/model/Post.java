@@ -1,8 +1,10 @@
-package com.ds;
+package com.ds.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
 
     private int userId;
     private int id;

@@ -1,4 +1,4 @@
-package com.ds;
+package com.ds.model;
 
 import com.google.gson.annotations.SerializedName;
 
